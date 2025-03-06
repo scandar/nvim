@@ -6,7 +6,7 @@ return {
       sections = {
         {
           section = "terminal",
-          cmd = "img2art media/wave.png --scale 0.1 --threshold 120 --alpha",
+          cmd = "img2art ~/.config/nvim/media/wave.png --scale 0.1 --threshold 120 --alpha",
           height = 21,
           width = 70,
           indent = -5,
@@ -16,7 +16,6 @@ return {
         {
           section = "recent_files",
           padding = 1,
-          -- padding = { 2, 2 },
         },
         { section = "startup" },
       },
