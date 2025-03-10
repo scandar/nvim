@@ -27,7 +27,10 @@ return {
 			})
 			lspconfig.markdown_oxide.setup({
 				capabilities = capabilities,
-      })
+			})
+			lspconfig.yamlls.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.cssls.setup({
 				capabilities = capabilities,
 				init_options = { provideFormatter = false },
