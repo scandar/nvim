@@ -16,6 +16,9 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+-- Use system clipboard
+vim.opt.clipboard = "unnamedplus"
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("highlight_yank", {}),
