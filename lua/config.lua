@@ -24,7 +24,7 @@ vim.wo.relativenumber = true
 vim.diagnostic.config({ virtual_text = true })
 
 -- <Esc> to exit terminal mode
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+-- vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
