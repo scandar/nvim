@@ -21,7 +21,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Enable inline diagnostics/virtual text
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({ virtual_lines = true })
 
 -- <Esc> to exit terminal mode
 -- vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
