@@ -18,18 +18,15 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
-			local mason_registry = require("mason-registry")
-			local vue_language_server = mason_registry.get_package("vue-language-server"):get_install_path()
-				.. "/node_modules/@vue/language-server"
-			local tsdk = mason_registry.get_package("typescript-language-server"):get_install_path()
-				.. "/node_modules/typescript/lib"
+			local vue_language_server = vim.fn.stdpath("data")
+				.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
-				on_attach = function(client, bufnr)
+				on_attach = function(_, bufnr)
 					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 				end,
 			})
@@ -59,12 +56,9 @@ return {
 				},
 				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 			})
-			lspconfig.volar.setup({
-				init_options = {
-					typescript = {
-						tsdk = tsdk,
-					},
-				},
+			lspconfig.emmet_language_server.setup({
+				filetypes = { "html", "css", "javascriptreact", "typescriptreact", "vue" },
+				capabilities = capabilities,
 			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
