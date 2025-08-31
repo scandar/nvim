@@ -10,6 +10,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "vtsls", "vue_ls" },
+        automatic_installation = true,
       })
     end,
   },
@@ -26,7 +27,10 @@ return {
         configNamespace = "typescript",
       }
 
+      -- Lua
       vim.lsp.enable("lua_ls")
+
+      -- JS/TS/Vue
       vim.lsp.config("vtsls", {
         capabilities = capabilities,
         settings = {
@@ -41,7 +45,21 @@ return {
         filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
       })
       vim.lsp.enable("vtsls")
+
+      vim.lsp.config("vue_ls", {
+        init_options = {
+          config = {
+            -- Disable LSP formatting for vue
+            -- prettier(none-ls) handles all formatting
+            vetur = {
+              format = false,
+            },
+          },
+        },
+      })
       vim.lsp.enable("vue_ls")
+
+      -- CSS/MD/JSON/YAML/HTML
       vim.lsp.config("cssls", { init_options = { provideFormatter = false } })
       vim.lsp.enable("cssls")
       vim.lsp.enable("markdown_oxide")
