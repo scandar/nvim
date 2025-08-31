@@ -7,16 +7,16 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				javascript = { "prettierd" },
-				typescript = { "prettierd" },
-				vue = { "prettierd" },
-				typescriptreact = { "prettierd" },
-				javascriptreact = { "prettierd" },
-				json = { "prettierd" },
-				css = { "prettierd" },
-				scss = { "prettierd" },
-				html = { "prettierd" },
-				markdown = { "prettierd" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				vue = { "prettier" },
+				typescriptreact = { "prettier" },
+				javascriptreact = { "prettier" },
+				json = { "prettier" },
+				css = { "prettier" },
+				scss = { "prettier" },
+				html = { "prettier" },
+				markdown = { "prettier" },
 			},
 		})
 
