@@ -7,25 +7,19 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				vue = { "prettier" },
-				typescriptreact = { "prettier" },
-				javascriptreact = { "prettier" },
-				json = { "prettier" },
-				css = { "prettier" },
-				scss = { "prettier" },
-				html = { "prettier" },
-				markdown = { "prettier" },
+				javascript = { "prettierd" },
+				typescript = { "prettierd" },
+				vue = { "prettierd" },
+				typescriptreact = { "prettierd" },
+				javascriptreact = { "prettierd" },
+				json = { "prettierd" },
+				css = { "prettierd" },
+				scss = { "prettierd" },
+				html = { "prettierd" },
+				markdown = { "prettierd" },
 			},
 		})
 
 		vim.keymap.set("n", "<leader>gf", conform.format, {})
-		-- vim.api.nvim_create_autocmd("BufWritePre", {
-		-- 	pattern = "*",
-		-- 	callback = function(args)
-		-- 		conform.format({ bufnr = args.buf })
-		-- 	end,
-		-- })
 	end,
 }
