@@ -10,7 +10,6 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "vtsls", "vue_ls" },
-        automatic_installation = true,
       })
     end,
   },
