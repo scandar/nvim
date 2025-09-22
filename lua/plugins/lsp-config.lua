@@ -58,7 +58,7 @@ return {
 				init_options = {
 					config = {
 						-- Disable LSP formatting for vue
-						-- prettier(none-ls) handles all formatting
+						-- prettier(conform) handles all formatting
 						vetur = {
 							format = false,
 						},
