@@ -8,7 +8,7 @@ return {
 		vim.keymap.set("n", "<leader>tf", ":TestFile<CR>")
 		vim.keymap.set("n", "<leader>ts", ":TestSuite<CR>")
 		vim.keymap.set("n", "<leader>tl", ":TestLast<CR>")
-		-- vim.keymap.set("n", "<leader>g", ":TestVisit<CR>")
+		vim.keymap.set("n", "<leader>tv", ":TestVisit<CR>")
 
 		vim.cmd("let test#strategy='vimux'")
 		vim.cmd("let g:test#javascript#runner = 'vitest'")
