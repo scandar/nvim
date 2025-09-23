@@ -23,9 +23,6 @@ vim.wo.relativenumber = true
 -- Enable inline diagnostics/virtual text
 vim.diagnostic.config({ virtual_text = true })
 
--- <Esc> to exit terminal mode
--- vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("highlight_yank", {}),
@@ -35,3 +32,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
 	end,
 })
+
+-- Copy relative file path
+vim.keymap.set("n", "<leader>cf", function()
+	local path = vim.fn.expand("%")
+	vim.fn.setreg("+", path)
+	print("Copied: " .. path)
+end, { desc = "Copy relative file path" })
