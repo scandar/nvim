@@ -17,6 +17,7 @@ return {
 				scss = { "prettierd" },
 				html = { "prettierd" },
 				markdown = { "prettierd" },
+				go = { "gofmt", "goimports" },
 			},
 		})
 

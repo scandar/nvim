@@ -18,6 +18,7 @@ return {
 					"yamlls",
 					"html",
 					"markdown_oxide",
+          "gopls",
 				},
 			})
 		end,
@@ -74,6 +75,9 @@ return {
 			vim.lsp.enable("jsonls")
 			vim.lsp.enable("yamlls")
 			vim.lsp.enable("html")
+
+			-- Go
+			vim.lsp.enable("gopls")
 
 			-- key bindings
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
