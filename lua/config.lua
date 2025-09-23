@@ -39,3 +39,25 @@ vim.keymap.set("n", "<leader>cf", function()
 	vim.fn.setreg("+", path)
 	print("Copied: " .. path)
 end, { desc = "Copy relative file path" })
+
+-- Open current file on GitHub
+vim.keymap.set("n", "<leader>gh", function()
+	local path = vim.fn.expand("%")
+	local line = vim.fn.line(".")
+	local remote_url = vim.fn.system("git config --get remote.origin.url"):gsub("\n", "")
+
+	if remote_url == "" then
+		print("Not a git repository or no remote origin found")
+		return
+	end
+
+	-- Convert SSH URL to HTTPS if needed
+	remote_url = remote_url:gsub("git@github.com:", "https://github.com/")
+	remote_url = remote_url:gsub("%.git$", "")
+
+	local branch = vim.fn.system("git branch --show-current"):gsub("\n", "")
+	local github_url = remote_url .. "/blob/" .. branch .. "/" .. path .. "#L" .. line
+
+	vim.fn.system("open '" .. github_url .. "'")
+	print("Opened: " .. github_url)
+end, { desc = "Open current file on GitHub" })
