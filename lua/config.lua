@@ -42,7 +42,8 @@ end, { desc = "Copy relative file path" })
 
 -- Open current file on GitHub
 vim.keymap.set("n", "<leader>gh", function()
-	local path = vim.fn.expand("%")
+	local absolute_path = vim.fn.expand("%:p")
+	local git_root = vim.fn.system("git rev-parse --show-toplevel"):gsub("\n", "")
 	local line = vim.fn.line(".")
 	local remote_url = vim.fn.system("git config --get remote.origin.url"):gsub("\n", "")
 
@@ -51,12 +52,20 @@ vim.keymap.set("n", "<leader>gh", function()
 		return
 	end
 
+	if git_root == "" then
+		print("Not inside a git repository")
+		return
+	end
+
+	-- Get relative path from git root
+	local relative_path = absolute_path:gsub("^" .. git_root .. "/", "")
+
 	-- Convert SSH URL to HTTPS if needed
 	remote_url = remote_url:gsub("git@github.com:", "https://github.com/")
 	remote_url = remote_url:gsub("%.git$", "")
 
 	local branch = vim.fn.system("git branch --show-current"):gsub("\n", "")
-	local github_url = remote_url .. "/blob/" .. branch .. "/" .. path .. "#L" .. line
+	local github_url = remote_url .. "/blob/" .. branch .. "/" .. relative_path .. "#L" .. line
 
 	vim.fn.system("open '" .. github_url .. "'")
 	print("Opened: " .. github_url)
