@@ -41,6 +41,10 @@ vim.keymap.set("n", "<leader>cf", function()
 end, { desc = "Copy relative file path" })
 
 -- Open current file on GitHub
+local function escapePattern(str)
+	return string.gsub(str, "([^%w])", "%%%1")
+end
+
 vim.keymap.set("n", "<leader>gh", function()
 	local absolute_path = vim.fn.expand("%:p")
 	local git_root = vim.fn.system("git rev-parse --show-toplevel"):gsub("\n", "")
@@ -58,7 +62,7 @@ vim.keymap.set("n", "<leader>gh", function()
 	end
 
 	-- Get relative path from git root
-	local relative_path = absolute_path:gsub("^" .. git_root .. "/", "")
+	local relative_path = absolute_path:gsub("^" .. escapePattern(git_root) .. "/", "")
 
 	-- Convert SSH URL to HTTPS if needed
 	remote_url = remote_url:gsub("git@github.com:", "https://github.com/")
