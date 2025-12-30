@@ -81,6 +81,11 @@ return {
 			vim.lsp.enable("gopls")
 
 			-- Rust
+			vim.lsp.config("rust_analyzer", {
+				on_attach = function(_, bufnr)
+					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+				end,
+			})
 			vim.lsp.enable("rust_analyzer")
 
 			-- key bindings
