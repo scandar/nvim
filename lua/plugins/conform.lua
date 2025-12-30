@@ -18,6 +18,7 @@ return {
 				html = { "prettierd" },
 				markdown = { "prettierd" },
 				go = { "gofmt", "goimports" },
+				rust = { "rustfmt" },
 			},
 		})
 

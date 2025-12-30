@@ -18,7 +18,8 @@ return {
 					"yamlls",
 					"html",
 					"markdown_oxide",
-          "gopls",
+					"gopls",
+					"rust_analyzer",
 				},
 			})
 		end,
@@ -78,6 +79,9 @@ return {
 
 			-- Go
 			vim.lsp.enable("gopls")
+
+			-- Rust
+			vim.lsp.enable("rust_analyzer")
 
 			-- key bindings
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
