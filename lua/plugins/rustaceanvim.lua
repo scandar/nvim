@@ -7,9 +7,13 @@ return {
 		config = function()
 			local extension_path = vim.fn.stdpath("data") .. "/mason/packages/codelldb" .. "/extension/"
 			local codelldb_path = extension_path .. "adapter/codelldb"
-			local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
-			-- If you are on Linux, replace the line above with the line below:
-			-- local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+			local liblldb_path = extension_path .. "lldb/lib/liblldb"
+			if vim.fn.has("mac") == 1 then
+				liblldb_path = liblldb_path .. ".dylib"
+			else
+				liblldb_path = liblldb_path .. ".so"
+			end
+
 			local cfg = require("rustaceanvim.config")
 
 			vim.g.rustaceanvim = {
@@ -17,6 +21,7 @@ return {
 					adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
 				},
 			}
+			vim.lsp.inlay_hint.enable(true)
 		end,
 	},
 	{
