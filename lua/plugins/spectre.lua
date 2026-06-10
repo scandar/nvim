@@ -4,6 +4,39 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
+		require("spectre").setup({
+			find_engine = {
+				["rg"] = {
+					command = "rg",
+					args = {
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+					},
+					options = {
+						["ignore-case"] = {
+							value = "--ignore-case",
+							icon = "[I]",
+							desc = "ignore case",
+						},
+						["hidden"] = {
+							value = "--hidden",
+							icon = "[H]",
+							desc = "hidden file",
+						},
+					},
+				},
+			},
+
+			default = {
+				find = {
+					cmd = "rg",
+					options = { "ignore-case", "hidden" },
+				},
+			},
+		})
 		vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', {
 			desc = "Toggle Spectre",
 		})
